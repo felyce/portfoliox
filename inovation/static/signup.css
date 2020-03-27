@@ -1,11 +1,17 @@
 h1 {
+    font-size:50px;
     text-align:center;
-    padding:40px 0;
-    font-size: 50px;
+    padding:25px 0;
 }
-p{
-    text-align:center;
-    font-size:25px;
+
+p {
+    font-size:25px ;
 }
+
+button {
+    margin-top:15px;
+}
+
+
 
 
