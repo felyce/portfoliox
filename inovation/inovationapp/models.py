@@ -10,7 +10,7 @@ class Profile(models.Model):
         blank = True
     )
     works = models.CharField(
-        max_length =50,
+        max_length = 50,
         blank = True
     )
 
