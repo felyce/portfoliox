@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+{% block customcss %}
+<link rel="stylesheet" type="text/css" href="{% static 'login.css' %}">
+
+{% endblock customcss %}
+ 
+{% block content %}
+<div class="checkbox mb-4">
+</div>
+{% if form.errors %}
+<p style="color:red; font-size:20px ;">ユーザー名とパスワードが一致しませんでした。もう一度やり直してください。</p>
+{% endif %}
+ 
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+    {% else %}
+    <p>Please login to see this page.</p>
+    {% endif %}
+{% endif %}
+ 
+<form method="post" action="{% url 'login' %}">
+{% csrf_token %}
+<table align="center">
+<tr>
+    <td>{{ form.username.label_tag }}</td>
+    <td>{{ form.username }}</td>
+</tr>
+<tr>
+    <td>{{ form.password.label_tag }}</td>
+    <td>{{ form.password }}</td>
+</tr>
+</table>
+<div class="container">
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
+</div>
+</form>
+{% endblock %}

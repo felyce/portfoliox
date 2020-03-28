@@ -10,14 +10,19 @@ def signupfunc(request):
     if request.method == 'POST':
         username2 = request.POST['username']
         password2 = request.POST['password']
-        prefectures = request.POST['prefectures']
+        prefectures2 = request.POST['prefectures']
+        works2 = request.POST['works']
+       
        
         try:
             User.objects.get(username=username2)
             return render(request, 'signup.html', {'error':'このユーザーは登録されています'})
         except:
-            user = User.objects.create_user(username2, prefectures , password2)
-            user.profile.prefectures = prefectures 
+            user = User.objects.create_user(username2, prefectures2 , (password2, works2))
+            user.profile.prefectures = prefectures2 
+            user.profile.works = works2 
             user.save()
             return render(request, 'signup.html')
     return render(request, 'signup.html')
+
+    
