@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+{% block customcss %}
+<link rel="stylesheet" type="text/css" href="{% static 'main_list.css' %}">
+{% endblock customcss %}
+
+{% block content %}
+<div class="mt-4"></div>
+{% for idea in main_idea %}
+<div class="alert alert-warning container rounded-pill" role="alert">
+    <a href="#">{{idea.author}}</a>
+    <p>{{idea.title}}</p>
+    <p>{{idea.content}}</p>
+    <a href="{% url 'good' idea.pk %}" class="btn btn-primary" role="button" aria-pressed="true">いいね：{{idea.good}}</a>
+
+    
+</div>
+
+{% endfor %}
+{% endblock content%}
+

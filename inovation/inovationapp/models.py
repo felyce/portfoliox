@@ -13,6 +13,8 @@ class Profile(models.Model):
         max_length = 50,
         blank = True
     )
+    def __str__(self):
+        return self.user.username
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
@@ -22,4 +24,21 @@ def create_user_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
+
+
+class Idea_list(models.Model):
+    genre = models.CharField(max_length=50)
+    def __str__(self):
+        return self.genre
 # Create your models here.
+
+class Opinion(models.Model):
+    author = models.CharField(max_length=30)
+    title = models.CharField(max_length =30)
+    content = models.TextField()
+    idea_list = models.ForeignKey(Idea_list, on_delete=models.CASCADE)
+    good = models.IntegerField(default=0)
+    goodcheck = models.CharField(max_length=30)
+    def __str__(self):
+        return self.idea_list.genre
+    

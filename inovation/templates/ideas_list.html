@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+{% block customcss %}
+<link rel="stylesheet" type="text/css" href="{% static 'ideas_list.css' %}">
+{% endblock customcss %}
+
+{% block content %}
+<div class="checks">
+    <form action="" method="get">
+        <input name="query" value="{{ request.GET.query }}" type="text">
+        <button type="submit">検索する</button>
+    </form>
+    <a href="../ideas_list" class="back">一覧画面に戻る</a>
+</div>
+
+<div class="mt-4"></div>
+{% for idea in object_list %}
+<div class="alert alert-warning container rounded-pill" role="alert">
+    <a href= "{% url 'branch' pk=idea.pk %}" class="alert-link">{{idea.genre}}　×　〇〇</a>
+</div>
+{% endfor%}
+
+{% endblock content %}
