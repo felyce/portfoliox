@@ -8,9 +8,9 @@
 <div class="mt-4"></div>
 {% for idea in main_idea %}
 <div class="alert alert-warning container rounded-pill" role="alert">
-    <a href="#">{{idea.author}}</a>
-    <p>{{idea.title}}</p>
-    <p>{{idea.content}}</p>
+    <a href="{% url 'detail' idea.author %}">名前：{{idea.author}}</a>
+    <p>タイトル：{{idea.title}}</p>
+    <p>内容：{{idea.content}}</p>
     <a href="{% url 'good' idea.pk %}" class="btn btn-primary" role="button" aria-pressed="true">いいね：{{idea.good}}</a>
 
     

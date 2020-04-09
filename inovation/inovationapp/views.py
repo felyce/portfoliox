@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import CreateView, TemplateView, ListView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Idea_list,Opinion
+from .models import Idea_list,Opinion,Profile
 from django.db.models import Q
 # Create your views here.
 
@@ -75,15 +75,21 @@ def goodfunc(request, pk):
         post.save()
         return redirect('main_list',pk=pk2)
 
+@login_required
 def branchfunc(request, pk):
     user = request.user.get_username()
     post = Opinion.objects.filter(idea_list_id=pk).filter(author=user)
-    print(type(post))
     if not post:
         return redirect('opinion',pk=pk)
     else:
         return redirect('main_list',pk=pk)
-    
+
+@login_required
+def detailfunc(request,author):
+    key = User.objects.get(username=author).id
+    profile2 = Profile.objects.get(user_id=key)
+    return render(request,'detail.html',{'profile':profile2})
+
 
 
 

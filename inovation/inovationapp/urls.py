@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import signupfunc,Home,Ideas_list,opinion,main_list,goodfunc,branchfunc
+from .views import signupfunc,Home,Ideas_list,opinion,main_list,goodfunc,branchfunc,detailfunc
 urlpatterns = [
     path('signup/',signupfunc,name='signup'),
     path('',Home.as_view(),name="home"),
@@ -7,5 +7,6 @@ urlpatterns = [
     path('opinion/<int:pk>',opinion,name="opinion"),
     path('main_list/<int:pk>',main_list,name="main_list"),
     path('good/<int:pk>',goodfunc,name="good"),
-    path('branch/<int:pk>',branchfunc,name="branch")
+    path('branch/<int:pk>',branchfunc,name="branch"),
+    path('detail/<str:author>',detailfunc,name="detail")
 ]
