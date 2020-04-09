@@ -8,5 +8,5 @@ urlpatterns = [
     path('main_list/<int:pk>',main_list,name="main_list"),
     path('good/<int:pk>',goodfunc,name="good"),
     path('branch/<int:pk>',branchfunc,name="branch"),
-    path('detail/<str:author>',detailfunc,name="detail")
+    path('detail/<str:author>',detailfunc,name="detail"),
 ]

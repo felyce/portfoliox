@@ -11,6 +11,7 @@
         <button type="submit">検索する</button>
     </form>
     <a href="../ideas_list" class="back">一覧画面に戻る</a>
+    <a href="../accounts/logout">ログアウト</a>
 </div>
 
 <div class="mt-4"></div>
@@ -19,5 +20,10 @@
     <a href= "{% url 'branch' pk=idea.pk %}" class="alert-link">{{idea.genre}}　×　〇〇</a>
 </div>
 {% endfor%}
+<div class="col-6 offset-3 justify-content-center">
+    {% if is_paginated %}
+        {% include 'pagination.html' %}
+    {% endif %}
+</div>
 
 {% endblock content %}

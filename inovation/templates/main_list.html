@@ -6,16 +6,22 @@
 
 {% block content %}
 <div class="mt-4"></div>
-{% for idea in main_idea %}
+{{main_title}}
+<a href="{% url 'opinion' pk=pk2 %}">新規投稿</a>
+{% for idea in page_obj %}
 <div class="alert alert-warning container rounded-pill" role="alert">
     <a href="{% url 'detail' idea.author %}">名前：{{idea.author}}</a>
     <p>タイトル：{{idea.title}}</p>
     <p>内容：{{idea.content}}</p>
     <a href="{% url 'good' idea.pk %}" class="btn btn-primary" role="button" aria-pressed="true">いいね：{{idea.good}}</a>
-
-    
 </div>
 
 {% endfor %}
+<div class="col-6 offset-3 justify-content-center">
+    {% if is_paginated %}
+        {% include 'pagination.html' %}
+    {% endif %}
+</div>
+
 {% endblock content%}
 
