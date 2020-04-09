@@ -7,6 +7,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Idea_list,Opinion,Profile
 from django.db.models import Q
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 # Create your views here.
 
 def signupfunc(request):
@@ -34,6 +35,7 @@ class Home(TemplateView):
 class Ideas_list(LoginRequiredMixin, ListView):
     template_name = 'ideas_list.html'
     model =  Idea_list
+    paginate_by = 3
     def get_queryset(self):
         q_word = self.request.GET.get('query')
 
@@ -57,8 +59,25 @@ def opinion(request,pk):
 
 @login_required
 def main_list(request,pk):
+    items = Opinion.objects.filter(idea_list_id=pk)
+    paginator = Paginator(items, 3)
+    page_num = request.GET.get('page', 1)
+    pages = paginator.page(page_num)
+    try:
+        pages =  paginator.page(page_num)
+    except PageNotAnInteger:
+
+        pages = paginator.page(1)
+
+    except EmptyPage:
+
+        pages = paginator.page(1)
+    
     d = {
-        'main_idea':Opinion.objects.filter(idea_list_id=pk)
+        'page_obj':pages,
+        'pk2':pk,
+        'main_title':Idea_list.objects.get(pk=pk).genre,
+        'is_paginated': pages.has_other_pages,
     }
     return render(request,"main_list.html",d)
 
@@ -89,6 +108,8 @@ def detailfunc(request,author):
     key = User.objects.get(username=author).id
     profile2 = Profile.objects.get(user_id=key)
     return render(request,'detail.html',{'profile':profile2})
+
+
 
 
 
