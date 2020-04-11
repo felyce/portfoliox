@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+ 
+{% block content %}
+ 
+<a href="../accounts/logout">ログアウト</a>
+<a href="../ideas_list">一覧画面</a>
+
+<div class="profile">
+    <h3>プロフィール</h3>
+    <p>名前：{{userinfo.user.username}}</p>
+    <p>出身地：{{userinfo.prefectures}}</p>
+    <p>職種：{{userinfo.works}}</p>
+    <a href="{% url 'edit' pk=userinfo.pk %}">プロフィール編集</a>
+</div>
+
+<h3>投稿一覧</h3>
+{% for idea in page_obj %}
+<a href="{% url 'idea_edit' pk=idea.pk %}">
+    <div class="my_idea mb-4">
+        <p>ジャンル：{{idea.idea_list.genre}}</p>
+        <p>タイトル：{{idea.title}}</p>
+        <p>内容：{{idea.content}}</p>
+        <p>いいね数{{idea.good}}</p>
+    </div>
+</a>
+{% endfor %}
+<div class="col-6 offset-3 justify-content-center">
+    {% if is_paginated %}
+        {% include 'pagination.html' %}
+    {% endif %}
+</div>
+
+{% endblock content %}

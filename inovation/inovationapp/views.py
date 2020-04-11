@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.views.generic import CreateView, TemplateView, ListView
+from django.views.generic import CreateView, TemplateView, ListView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Idea_list,Opinion,Profile
@@ -107,7 +107,57 @@ def branchfunc(request, pk):
 def detailfunc(request,author):
     key = User.objects.get(username=author).id
     profile2 = Profile.objects.get(user_id=key)
-    return render(request,'detail.html',{'profile':profile2})
+    opinion2 = Opinion.objects.filter(author=author)
+    z = {
+        "profile":profile2,
+        "opinions":opinion2
+    }
+    return render(request,'detail.html',z)
+
+@login_required
+def myfunc(request):
+    id = request.user.id
+    userinfo = Profile.objects.get(user_id=id)
+    name = userinfo.user.username
+    ideas = Opinion.objects.filter(author=name)
+    paginator = Paginator(ideas, 3)
+    page_num = request.GET.get('page', 1)
+    pages = paginator.page(page_num)
+    try:
+        pages =  paginator.page(page_num)
+    except PageNotAnInteger:
+
+        pages = paginator.page(1)
+
+    except EmptyPage:
+
+        pages = paginator.page(1)
+
+    z = {
+        'userinfo':userinfo,
+        'page_obj':pages,
+        'is_paginated': pages.has_other_pages,
+    }
+    return render(request,'my_page.html',z)
+
+class Edit(LoginRequiredMixin, UpdateView):
+    template_name = "edit.html"
+    model = Profile
+    fields = ('prefectures','works')
+    success_url = reverse_lazy('my_page')
+
+class Idea_edit(LoginRequiredMixin, UpdateView):
+    template_name = "idea_edit.html"
+    model = Opinion
+    fields = ('title','content')
+    success_url = reverse_lazy('my_page')
+
+class Delete(LoginRequiredMixin,DeleteView):
+    template_name = "delete.html"
+    model = Opinion
+    success_url = reverse_lazy('my_page')
+
+
 
 
 

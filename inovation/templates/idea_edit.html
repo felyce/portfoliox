@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+ 
+{% block content %}
+<form action="" method="POST">{% csrf_token %}
+    <p>タイトル：{{form.title}}</p>
+    <p>内容：{{form.content}}</p>
+    <input type="submit" value="更新する">
+</form>
+<a href="{% url 'delete' pk=opinion.pk %}">削除する</a>
+
+{% endblock content %}
