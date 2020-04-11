@@ -8,6 +8,8 @@
 <div class="mt-4"></div>
 {{main_title}}
 <a href="{% url 'opinion' pk=pk2 %}">新規投稿</a>
+<a href="../accounts/logout">ログアウト</a>
+<a href="../my_page">マイページ</a>
 {% for idea in page_obj %}
 <div class="alert alert-warning container rounded-pill" role="alert">
     <a href="{% url 'detail' idea.author %}">名前：{{idea.author}}</a>
