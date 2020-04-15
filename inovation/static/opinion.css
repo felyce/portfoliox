@@ -8,13 +8,13 @@ html,body{
     height: 100%;
     margin: 0;
 }
+
 .bg{
     background: url("media/shutterstock_1507606391.jpg") no-repeat center;
     background-size: cover;
     position: relative;
     height:100%;
 }
-
 .bg::before{
     background-color: rgba(0,0,0,0.5);  
     position: absolute;
@@ -27,12 +27,11 @@ html,body{
 .box{
     position: absolute;
     width: 100%;
-    text-align: center;
 }
 
 .header {
     height:100px;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
 }
 
 .title {
@@ -41,16 +40,15 @@ html,body{
     font-size: 40px;
     margin: 5px 0 0 15px;
     color:white;
+    float: left;
 }
 
-footer {
-    position: absolute;
-    top:760px;
-    left:460px;
+.right {
+    float: right;
+    margin: 15px 15px 0 0;
 }
 
-
-.right > a {
+a, .submit {
     border: 1px solid black;
     vertical-align:top;
     display: inline-block;
@@ -63,14 +61,32 @@ footer {
     margin-bottom: 20px;
     margin: 15px 15px 0 0;
     height:60px;
-
 }
 
-.right > a:hover {
+a:hover, .submit:hover {
     background-image: linear-gradient(45deg, #FFC107 0%, #f76a35 100%);
     text-decoration: none;
 }
 
+footer {
+    position: absolute;
+    top:760px;
+    left:460px;
+    color:white;
+    font-size: 20px;
+}
+
+h1 {
+    color:white;
+    text-align: center;
+    font-size: 60px;
+    margin-bottom: 40px;
+}
+
+h3 {
+    color:white;
+    margin-bottom: 15px;
+}
 
 p {
     color:white;
@@ -78,37 +94,10 @@ p {
 }
 
 form {
-    display:inline;
-    margin-right: 15px;
+    text-align: center;
 }
 
-input {
-    margin-top: 30px;
-}
-
-.right {
-    float: right;
-}
-
-.description > p {
-    font-size: 25px;
-}
-
-.description > p + p {
-    margin-bottom: 50px;
-}
-
-.alert > a {
-    text-decoration: none;
-    display:block;
-    font-size: 25px;
-    padding:10px;
-}
-
-.alert {
-    margin-bottom: 25px;
-}
-
-.justify-content-center {
-    margin-top: 20px;
+textarea {
+    height:260px;
+    width:650px;
 }

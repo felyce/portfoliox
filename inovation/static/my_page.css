@@ -14,7 +14,6 @@ html,body{
     position: relative;
     height:100%;
 }
-
 .bg::before{
     background-color: rgba(0,0,0,0.5);  
     position: absolute;
@@ -31,26 +30,23 @@ html,body{
 }
 
 .header {
-    height:100px;
-    margin-bottom: 50px;
+    height:70px;
+    margin-bottom: 20px;
 }
 
 .title {
-    text-align: left;
+    float: left;
     font-family: 'Amatic SC', cursive;
     font-size: 40px;
     margin: 5px 0 0 15px;
     color:white;
 }
 
-footer {
-    position: absolute;
-    top:760px;
-    left:460px;
+.right {
+    float: right;
 }
 
-
-.right > a {
+.right > a, .pro {
     border: 1px solid black;
     vertical-align:top;
     display: inline-block;
@@ -63,52 +59,53 @@ footer {
     margin-bottom: 20px;
     margin: 15px 15px 0 0;
     height:60px;
-
 }
 
-.right > a:hover {
+.right > a:hover, .pro {
     background-image: linear-gradient(45deg, #FFC107 0%, #f76a35 100%);
     text-decoration: none;
 }
 
-
 p {
+    font-size: 25px;
     color:white;
-    font-size: 20px;
 }
 
-form {
-    display:inline;
-    margin-right: 15px;
+
+h2 {
+    color:white;
+    font-size: 40px;
+    margin-bottom: 20px;
 }
 
-input {
+.profile {
+    float:left;
+    margin-left: 120px;
+    border:1px solid white;
+    padding:10px
+}
+
+.post {
+    float:right;
+    margin-right: 80px;
+    border:1px solid white;
+    padding:10px;
     margin-top: 30px;
 }
 
-.right {
-    float: right;
-}
-
-.description > p {
-    font-size: 25px;
-}
-
-.description > p + p {
-    margin-bottom: 50px;
-}
-
-.alert > a {
+.post > a {
     text-decoration: none;
-    display:block;
-    font-size: 25px;
-    padding:10px;
 }
 
-.alert {
-    margin-bottom: 25px;
+.post p {
+    width:900px;
+    word-wrap: break-word;
 }
 
-.justify-content-center {
-    margin-top: 20px;
+footer {
+    position: absolute;
+    top:760px;
+    left:460px;
+    color:white;
+    font-size: 20px;
 }
