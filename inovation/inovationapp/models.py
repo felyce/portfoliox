@@ -35,10 +35,10 @@ class Idea_list(models.Model):
 class Opinion(models.Model):
     author = models.CharField(max_length=30)
     title = models.CharField(max_length =30)
-    content = models.TextField()
+    content = models.TextField(max_length=300)
     idea_list = models.ForeignKey(Idea_list, on_delete=models.CASCADE)
     good = models.IntegerField(default=0)
-    goodcheck = models.CharField(max_length=30)
+    goodcheck = models.CharField(max_length=1000)
     def __str__(self):
         return self.idea_list.genre
     

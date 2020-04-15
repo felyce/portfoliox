@@ -60,7 +60,7 @@ def opinion(request,pk):
 @login_required
 def main_list(request,pk):
     items = Opinion.objects.filter(idea_list_id=pk)
-    paginator = Paginator(items, 3)
+    paginator = Paginator(items, 5)
     page_num = request.GET.get('page', 1)
     pages = paginator.page(page_num)
     try:
@@ -120,7 +120,7 @@ def myfunc(request):
     userinfo = Profile.objects.get(user_id=id)
     name = userinfo.user.username
     ideas = Opinion.objects.filter(author=name)
-    paginator = Paginator(ideas, 3)
+    paginator = Paginator(ideas, 1)
     page_num = request.GET.get('page', 1)
     pages = paginator.page(page_num)
     try:

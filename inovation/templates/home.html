@@ -2,32 +2,33 @@
 {% load static %}
 {% block customcss %}
 <link rel="stylesheet" type="text/css" href="{% static 'home.css' %}">
-<link href="https://fonts.googleapis.com/css?family=Amatic+SC:700 rel="stylesheet">
 {% endblock customcss %}
 
  
 {% block content %}
-<body>
-    <div class="header">
-        <div class="left">
-            CrossInovation
+<div class="bg">
+    <div class="box">
+        <div class="header">
+            <div class="title">
+                CrossInnovation
+            </div>
         </div>
-        <div class="right">
-           <a href="../accounts/login">ログイン</a>
-           <a href="{% url 'signup'%}">新規会員登録</a>
+        <div class="main">
+            <h1>イノベーションは既存知の組み合わせである</h1>
+            <p>現代は既にものが溢れかえっています。</p>
+            <p>つまりイノベーションの準備はすでに整っているのです。</p>
+            <p>鍵となるのはいかにして横断的な知識を手に入れるかです。</p>
+            <p>そこで本サービスは様々な経歴を持つ人々がアイデアを共有する場を提供しています。</p>
+            <p class="last">さぁあなたも世界を変えましょう！!</p>
         </div>
+        <div class="btn">
+            <a href="{% url 'signup'%}">新規会員登録</a>
+            <a href="../accounts/login">ログイン</a>
+            <p>ゲストユーザーでログインできます。</p>
+        </div>
+        <footer>
+            <p>Copyright © 2020 CrossInnovation Inc. All Rights Reserved.</p>
+        </footer>
     </div>
-    <div class="main">
-        <h1>イノベーションは既存知の組み合わせである</h1>
-        <p>現代は科学技術の進歩により移り変わりが早く、10年後の未来さへ正確に予測できない状況です。</p>
-        <p>数10年前ではあまり普及していなかったスマートフォンが、現在私たちの生活に欠かせないものとなっていることを考えれば上記の状況も納得がいくのではないでしょうか</p>
-        <p>そういったスマホが代表するような我々の生活構造を変革するまでの発明を一般的にはイノベーションといいます</p>
-        <p>イノベーションなど凡人には無縁で一部の天才たちの世界の話だと考えているのではないでしょうか</p>
-        <p>しかし実際は誰もが工夫次第で実現可能なものなのです。</p>
-        <p>なぜならイノベーションとは既存知の組み合わせに過ぎないからです</p>
-        <p>本サービスは上記の理念の基、世界を自らの力で変えたいというあなたにとって理想のパートナーとなる異業種の人とのつながりを作り新たなイノベーションを生む環境を提供します。</p>
-        <p>さぁあなたも世界を変えましょう</p>
-    </div>
-</body>
-
+</div>
 {% endblock content %}
