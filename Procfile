@@ -1,1 +1,1 @@
-web: gunicorn inovate_project.inovation.wsgi --log-file -
+web: gunicorn inovation.wsgi --log-file -
